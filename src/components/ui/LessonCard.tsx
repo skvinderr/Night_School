@@ -8,40 +8,50 @@ interface LessonCardProps {
     duration: string;
     rating: number;
     category: string;
+    image?: string;
 }
 
-export function LessonCard({ id, title, description, duration, rating, category }: LessonCardProps) {
+export function LessonCard({ id, title, description, duration, rating, category, image }: LessonCardProps) {
     return (
-        <div className="group relative overflow-hidden rounded-xl bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-all hover:shadow-xl hover:shadow-amber-500/5 hover:border-amber-500/30">
-            <div className="p-5 space-y-3">
-                <div className="flex justify-between items-start">
-                    <span className="inline-flex items-center rounded-full bg-white/10 px-2.5 py-0.5 text-xs font-medium text-white/90 border border-white/10">
-                        {category}
-                    </span>
-                    <div className="flex items-center gap-1 text-amber-400 text-xs font-bold">
-                        <Star className="w-3 h-3 fill-current" />
-                        {rating}
-                    </div>
-                </div>
+        <div className="group relative h-32 w-full overflow-hidden rounded-lg cursor-pointer">
+            {/* Background Image */}
+            <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{
+                    backgroundImage: `url('${image || "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2940&auto=format&fit=crop"}')`
+                }}
+            />
 
-                <div className="space-y-1">
-                    <h3 className="text-lg font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
+
+            {/* Content */}
+            <div className="relative z-10 h-full flex items-center justify-between px-6">
+                <div className="flex-1 pr-4">
+                    <div className="flex items-center gap-3 mb-2">
+                        <span className="text-[10px] uppercase tracking-widest font-bold text-amber-400">
+                            {category}
+                        </span>
+                        <div className="flex items-center gap-1 text-white/60 text-[10px]">
+                            <Clock className="w-3 h-3" />
+                            {duration}
+                        </div>
+                    </div>
+                    <h3 className="text-xl font-serif font-bold text-white group-hover:text-amber-200 transition-colors">
                         {title}
                     </h3>
-                    <p className="text-sm text-white/60 line-clamp-2 font-medium">
+                    <p className="text-sm text-white/60 line-clamp-1 font-light mt-1">
                         {description}
                     </p>
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-white/10">
-                    <div className="flex items-center gap-2 text-xs text-white/50 font-medium">
-                        <Clock className="w-3 h-3" />
-                        {duration}
-                    </div>
-                    <Link href={`/lesson/${id}`} className="inline-flex items-center justify-center rounded-full bg-amber-500 h-8 w-8 text-black shadow-lg shadow-amber-500/20 transition-all hover:bg-amber-400 hover:scale-105">
-                        <Play className="h-3 w-3 fill-current ml-0.5" />
-                    </Link>
-                </div>
+                {/* Play Button (Only visible on hover or always subtle) */}
+                <Link
+                    href={`/lesson/${id}`}
+                    className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all hover:scale-110"
+                >
+                    <Play className="w-4 h-4 fill-current ml-0.5" />
+                </Link>
             </div>
         </div>
     );
