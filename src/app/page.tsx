@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Play, Sprout, Users, Sun, CheckCircle2, Star, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/lib/languageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="flex flex-col items-center w-full">
       {/* Hero Section - Realistic & Photographic */}
@@ -20,25 +25,24 @@ export default function Home() {
         <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center text-center space-y-8 pt-20">
           <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1.5 text-sm font-medium text-white mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <span className="flex h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
-            New: Better Harvests Module
+            {t("hero.new")}
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white max-w-[900px] leading-[1.1] drop-shadow-lg animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-100">
-            Learn while the world sleeps.
+            {t("hero.title")}
           </h1>
 
           <p className="max-w-[600px] text-gray-200 md:text-lg lg:text-xl font-normal leading-relaxed drop-shadow-md animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-            Practical audio lessons for farmers and small business owners.
-            Master new skills during your rest, so you can grow when the sun rises.
+            {t("hero.subtitle")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 min-w-[300px] justify-center pt-8 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
             <Link href="/dashboard" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-base font-semibold text-green-900 shadow-xl transition-all hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              Start Learning Free
+              {t("hero.cta")}
               <Play className="ml-2 h-4 w-4 fill-current" />
             </Link>
             <Link href="#how-it-works" className="inline-flex items-center justify-center rounded-full border border-white/30 bg-black/20 backdrop-blur-sm px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all hover:bg-black/40 hover:border-white/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              How It Works
+              {t("hero.how")}
             </Link>
           </div>
         </div>
@@ -55,23 +59,23 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-                Education that fits your life.
+                {t("features.title")}
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We know you're busy from dawn till dusk. That's why NightSchool is designed to work when you're resting. No screens, no reading—just listen.
+                {t("features.subtitle")}
               </p>
               <ul className="space-y-4 pt-4">
                 <li className="flex items-center gap-3 text-gray-700">
                   <div className="p-1 rounded-full bg-green-100 text-green-700"><CheckCircle2 className="w-5 h-5" /></div>
-                  <span className="font-medium">Scientifically designed for memory retention</span>
+                  <span className="font-medium">{t("features.1")}</span>
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
                   <div className="p-1 rounded-full bg-green-100 text-green-700"><CheckCircle2 className="w-5 h-5" /></div>
-                  <span className="font-medium">Works completely offline</span>
+                  <span className="font-medium">{t("features.2")}</span>
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
                   <div className="p-1 rounded-full bg-green-100 text-green-700"><CheckCircle2 className="w-5 h-5" /></div>
-                  <span className="font-medium">Recognized by local banks</span>
+                  <span className="font-medium">{t("features.3")}</span>
                 </li>
               </ul>
             </div>
@@ -88,9 +92,9 @@ export default function Home() {
               <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-700 mb-2">
                 <Sun className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">1. Listen at Night</h3>
+              <h3 className="text-xl font-bold text-gray-900">{t("step.1.title")}</h3>
               <p className="text-gray-600 leading-relaxed">
-                Play our soothing audio lessons before you sleep. Designed to be absorbed while you rest.
+                {t("step.1.desc")}
               </p>
             </div>
 
@@ -98,9 +102,9 @@ export default function Home() {
               <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-700 mb-2">
                 <Sprout className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">2. Grow Daily</h3>
+              <h3 className="text-xl font-bold text-gray-900">{t("step.2.title")}</h3>
               <p className="text-gray-600 leading-relaxed">
-                A quick 2-minute quiz in the morning reinforces what you learned. Watch your skills grow.
+                {t("step.2.desc")}
               </p>
             </div>
 
@@ -108,9 +112,9 @@ export default function Home() {
               <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-700 mb-2">
                 <Users className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">3. Real Rewards</h3>
+              <h3 className="text-xl font-bold text-gray-900">{t("step.3.title")}</h3>
               <p className="text-gray-600 leading-relaxed">
-                Earn certificates that unlock better loan terms and opportunities with our partners.
+                {t("step.3.desc")}
               </p>
             </div>
           </div>
@@ -121,7 +125,7 @@ export default function Home() {
       <section className="w-full py-24 bg-white">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Stories from our community</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">{t("stories.title")}</h2>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {[
@@ -164,14 +168,14 @@ export default function Home() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-8 text-center">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Start your journey tonight.</h2>
+              <h2 className="text-3xl font-bold tracking-tight md:text-5xl">{t("cta.title")}</h2>
               <p className="max-w-[600px] text-green-100 md:text-xl mx-auto">
-                Join thousands of farmers and workers improving their lives.
+                {t("cta.subtitle")}
               </p>
             </div>
 
             <Link href="/dashboard" className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-lg font-bold text-green-900 shadow-lg transition-transform hover:scale-105 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              Start Learning Free <ArrowRight className="ml-2 h-5 w-5" />
+              {t("hero.cta")} <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>
         </div>

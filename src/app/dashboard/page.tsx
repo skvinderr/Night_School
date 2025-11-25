@@ -11,8 +11,8 @@ export default function Dashboard() {
     const recommendedLessons = [
         {
             id: "1",
-            title: "Better Crops: Soil Health",
-            description: "Simple ways to keep your land healthy for years.",
+            title: t("card.crops.title"),
+            description: t("card.crops.desc"),
             duration: "15 min",
             rating: 4.8,
             category: "Farming",
@@ -20,8 +20,8 @@ export default function Dashboard() {
         },
         {
             id: "2",
-            title: "Money Basics: Saving",
-            description: "How to save small amounts safely for the future.",
+            title: t("card.saving.title"),
+            description: t("card.saving.desc"),
             duration: "12 min",
             rating: 4.9,
             category: "Money",
@@ -29,8 +29,8 @@ export default function Dashboard() {
         },
         {
             id: "3",
-            title: "Small Loans Explained",
-            description: "Understanding how loans work before you borrow.",
+            title: t("card.loans.title"),
+            description: t("card.loans.desc"),
             duration: "18 min",
             rating: 4.7,
             category: "Business",
@@ -92,12 +92,34 @@ export default function Dashboard() {
                                 <span className="text-amber-400 uppercase tracking-widest text-sm font-bold">{t("dash.tonightFocus")}</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
-                                Money Basics: <br />
-                                <span className="italic text-white/80">The Art of Saving</span>
+                                {t("lesson.money.title")}: <br />
+                                <span className="italic text-white/80">{t("lesson.money.subtitle")}</span>
                             </h2>
                             <p className="text-lg text-white/70 max-w-xl font-light leading-relaxed mx-auto lg:mx-0">
-                                Discover the fundamental principles of financial growth. Learn how small, consistent actions can lead to a secure and prosperous future for your farm and family.
+                                {t("lesson.money.desc")}
                             </p>
+
+                            {/* Why it matters - Filling the space */}
+                            <div className="pt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto lg:mx-0">
+                                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center text-center gap-2 hover:bg-white/10 transition-colors">
+                                    <div className="p-2 bg-green-500/20 rounded-full text-green-400">
+                                        <Sparkles className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-medium text-white/90">{t("why.1")}</span>
+                                </div>
+                                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center text-center gap-2 hover:bg-white/10 transition-colors">
+                                    <div className="p-2 bg-blue-500/20 rounded-full text-blue-400">
+                                        <Sparkles className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-medium text-white/90">{t("why.2")}</span>
+                                </div>
+                                <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex flex-col items-center text-center gap-2 hover:bg-white/10 transition-colors">
+                                    <div className="p-2 bg-purple-500/20 rounded-full text-purple-400">
+                                        <Sparkles className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-medium text-white/90">{t("why.3")}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

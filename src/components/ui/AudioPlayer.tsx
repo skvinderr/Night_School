@@ -45,8 +45,8 @@ export function AudioPlayer() {
                 <div className="flex-1 w-full min-w-0 flex flex-col justify-center">
                     {/* Track Info */}
                     <div className="text-center md:text-left mb-6 space-y-1">
-                        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white leading-tight truncate">Money Basics</h3>
-                        <p className="text-base text-white/60 font-medium tracking-wide">{t("player.lesson")} 1: The Art of Saving</p>
+                        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white leading-tight truncate">{t("lesson.money.title")}</h3>
+                        <p className="text-base text-white/60 font-medium tracking-wide">{t("player.lesson")} 1: {t("lesson.money.subtitle")}</p>
                     </div>
 
                     {/* Controls & Progress Row */}
