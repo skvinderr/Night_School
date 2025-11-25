@@ -3,6 +3,7 @@ import { Playfair_Display, Lato } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { LanguageProvider } from "@/lib/languageContext";
 
 const playfair = Playfair_Display({
   variable: "--font-serif",
@@ -32,11 +33,13 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${lato.variable} antialiased min-h-screen flex flex-col font-sans`}
       >
-        <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

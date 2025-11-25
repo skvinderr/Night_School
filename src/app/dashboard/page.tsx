@@ -1,8 +1,13 @@
+"use client";
+
 import { AudioPlayer } from "@/components/ui/AudioPlayer";
 import { LessonCard } from "@/components/ui/LessonCard";
 import { Sparkles } from "lucide-react";
+import { useLanguage } from "@/lib/languageContext";
 
 export default function Dashboard() {
+    const { t } = useLanguage();
+
     const recommendedLessons = [
         {
             id: "1",
@@ -50,57 +55,57 @@ export default function Dashboard() {
 
             <div className="container mx-auto px-6 py-12 relative z-10 flex flex-col h-full">
                 {/* Minimalist Header & Stats */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-white/10 pb-8">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-white/10 pb-8">
                     <div className="space-y-2">
-                        <p className="text-amber-400 font-serif italic text-xl tracking-wide">Good Evening, Alex</p>
+                        <p className="text-amber-400 font-serif italic text-xl tracking-wide">{t("dash.greeting")}, Alex</p>
                         <h1 className="text-5xl md:text-7xl font-serif font-bold text-white leading-tight">
-                            Continue your <br />
-                            <span className="text-white/90">Journey.</span>
+                            {t("dash.continue")} <br />
+                            <span className="text-white/90">{t("dash.journey")}</span>
                         </h1>
                     </div>
 
                     {/* Minimalist Stats - Text Only */}
                     <div className="flex gap-12 mt-8 md:mt-0">
                         <div className="text-right">
-                            <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-1">Total Growth</p>
+                            <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-1">{t("dash.totalGrowth")}</p>
                             <p className="text-3xl font-serif text-white">1,250 <span className="text-sm font-sans text-amber-400">XP</span></p>
                         </div>
                         <div className="text-right">
-                            <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-1">Streak</p>
-                            <p className="text-3xl font-serif text-white">5 <span className="text-sm font-sans text-amber-400">Days</span></p>
+                            <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-1">{t("dash.streak")}</p>
+                            <p className="text-3xl font-serif text-white">5 <span className="text-sm font-sans text-amber-400">{t("dash.days")}</span></p>
                         </div>
                     </div>
                 </div>
 
+                {/* Player Section - Full Width & Prominent */}
+                <div className="mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                    <AudioPlayer />
+                </div>
+
                 {/* Main Content Area - Editorial Layout */}
                 <div className="grid lg:grid-cols-12 gap-12">
-                    {/* Featured Lesson (Hero) */}
+                    {/* Featured Lesson Info */}
                     <div className="lg:col-span-7 space-y-8">
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
+                        <div className="space-y-4 text-center lg:text-left">
+                            <div className="flex items-center justify-center lg:justify-start gap-3">
                                 <span className="w-8 h-[1px] bg-amber-400"></span>
-                                <span className="text-amber-400 uppercase tracking-widest text-sm font-bold">Tonight's Focus</span>
+                                <span className="text-amber-400 uppercase tracking-widest text-sm font-bold">{t("dash.tonightFocus")}</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
                                 Money Basics: <br />
                                 <span className="italic text-white/80">The Art of Saving</span>
                             </h2>
-                            <p className="text-lg text-white/70 max-w-xl font-light leading-relaxed">
+                            <p className="text-lg text-white/70 max-w-xl font-light leading-relaxed mx-auto lg:mx-0">
                                 Discover the fundamental principles of financial growth. Learn how small, consistent actions can lead to a secure and prosperous future for your farm and family.
                             </p>
-                        </div>
-
-                        {/* Minimalist Player */}
-                        <div className="pt-8">
-                            <AudioPlayer />
                         </div>
                     </div>
 
                     {/* Up Next - Cinematic List */}
                     <div className="lg:col-span-5 space-y-8">
                         <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                            <h3 className="text-2xl font-serif text-white">Up Next</h3>
-                            <button className="text-xs uppercase tracking-widest text-white/60 hover:text-amber-400 transition-colors">View Library</button>
+                            <h3 className="text-2xl font-serif text-white">{t("dash.upNext")}</h3>
+                            <button className="text-xs uppercase tracking-widest text-white/60 hover:text-amber-400 transition-colors">{t("dash.viewLibrary")}</button>
                         </div>
                         <div className="space-y-6">
                             {recommendedLessons.map((lesson) => (
